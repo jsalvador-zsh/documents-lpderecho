@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_documento_informe_form" model="ir.ui.view">
+        <field name="name">documento.informe.form</field>
+        <field name="model">documento.informe</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="Información">
+                            <field name="name" />
+                            <field name="nombre" />
+                            <field name="tipo" />
+                            <field name="fecha" />
+                            <field name="entidad_destino" />
+                            <field name="oficio_asociado" />
+                        </group>
+                        <group string="Detalle">
+                            <field name="motivo" />
+                            <field name="inicio" />
+                            <field name="fin" />
+                            <field name="redactado" />
+                            <field name="curso_relacionado" />
+                        </group>
+                    </group>
+                    <group string="Subir y ver documento">
+                        <field name="documento" filename="name_documento" widget="pdf_viewer" />
+                        <field name="name_documento" invisible="1" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_documento_informe_tree" model="ir.ui.view">
+        <field name="name">documento.informe.tree</field>
+        <field name="model">documento.informe</field>
+        <field name="arch" type="xml">
+            <tree string="Documentos">
+                <field name="name" />
+                <field name="nombre" />
+                <field name="tipo" />
+                <field name="fecha" />
+                <field name="entidad_destino" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_documento_informe_kanban" model="ir.ui.view">
+        <field name="name">documento.informe.kanban</field>
+        <field name="model">documento.informe</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_documents">
+                <field name="id" />
+                <field name="nombre" />
+                <field name="name" />
+                <field name="tipo" />
+                <field name="fecha" />
+                <field name="entidad_destino" />
+                <field name="fin" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image me-1">
+                                <img t-att-src="'/documents/static/src/img/doc.png'" alt="Image" />
+                            </div>
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_title oe_partner_heading">
+                                            <field name="nombre" />
+                                        </strong>
+                                        <div class="mt-1">
+                                            <field name="tipo" />
+                                        </div>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <span class="float-right text-right">
+                                            <field name="name" class="badge badge-info" />
+                                        </span>
+                                        <div class="mt-1">
+                                            <field name="redactado" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left">
+                                        <field name="entidad_destino" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="view_documento_informe_search" model="ir.ui.view">
+        <field name="name">documento.informe.search</field>
+        <field name="model">documento.informe</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- Añadir campos para búsqueda -->
+                <field name="name" string="Código"/>
+                <field name="nombre" string="Nombre del documento"/>
+                <field name="entidad_destino" string="Entidad"/>
+                <field name="tipo" string="Tipo"/>
+            </search>
+        </field>
+    </record>
+    <record id="action_documento_informe" model="ir.actions.act_window">
+        <field name="name">Informes</field>
+        <field name="res_model">documento.informe</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Sube el primer informe
+            </p>
+        </field>
+    </record>
+
+</odoo>

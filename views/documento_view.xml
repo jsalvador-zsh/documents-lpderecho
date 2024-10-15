@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id="view_my_documents_kanban" model="ir.ui.view">
+        <field name="name">my.documents.kanban</field>
+        <field name="model">ir.attachment</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="create_date"/>
+                <field name="res_model"/>
+                <field name="res_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card">
+                            <div class="oe_kanban_details">
+                                <strong>
+                                    <field name="name"/>
+                                </strong>
+                                <div>
+                                    <span t-esc="record.create_date.value"/>
+                                </div>
+                                <div>
+                                    <span t-esc="record.res_model.value"/>
+                                </div>
+                                <div>
+                                    <span t-esc="record.res_id.value"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_my_documents" model="ir.actions.act_window">
+        <field name="name">Documents</field>
+        <field name="res_model">ir.attachment</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[
+            ('mimetype', 'in', [
+                'application/pdf', 
+                'application/msword', 
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+            ]),
+            ('create_uid', '=', uid)
+        ]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to upload a document.
+            </p>
+        </field>
+    </record>
+
+</odoo>

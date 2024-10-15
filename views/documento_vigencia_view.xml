@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_documento_vigencia_form" model="ir.ui.view">
+        <field name="name">documento.vigencia.form</field>
+        <field name="model">documento.vigencia</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="Trámite">
+                            <field name="name" />
+                            <field name="fecha_solicitud" />
+                            <field name="fecha_atencion" />
+                            <field name="estado" />
+                        </group>
+                        <group string="Vigencia actualizada">
+                            <field name="vigencia_inicio" />
+                            <field name="vigencia_fin" />
+                            <field name="dias_faltantes" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_documento_vigencia_tree" model="ir.ui.view">
+        <field name="name">documento.vigencia.tree</field>
+        <field name="model">documento.vigencia</field>
+        <field name="arch" type="xml">
+            <tree string="Documentos">
+                <field name="vigencia_fin" />
+                <field name="name" />
+                <field name="fecha_solicitud" />
+                <field name="fecha_atencion" />
+                <field name="estado" widget="badge"
+                    decoration-warning="estado == 'porvencer'"
+                    decoration-danger="estado == 'vencido'"
+                    decoration-success="estado == 'vigente'" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_documento_vigencia_search" model="ir.ui.view">
+        <field name="name">documento.vigencia.search</field>
+        <field name="model">documento.vigencia</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- Añadir campos para búsqueda -->
+                <field name="name" string="Código"/>
+                <field name="estado" string="Estado"/>
+            </search>
+        </field>
+    </record>
+    <record id="action_documento_vigencia" model="ir.actions.act_window">
+        <field name="name">Vigencias poder</field>
+        <field name="res_model">documento.vigencia</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Sube la primera vigencia poder
+            </p>
+            <p>Las vigencias al acercarse la fecha de vencimiento lanzan una alerta con 7 días
+                antes.</p>
+        </field>
+    </record>
+
+</odoo>

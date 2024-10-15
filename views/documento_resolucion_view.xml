@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_documento_resolucion_form" model="ir.ui.view">
+        <field name="name">documento.resolucion.form</field>
+        <field name="model">documento.resolucion</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="Información general">
+                            <field name="resolucion_decanal" />
+                            <field name="year" />
+                            <field name="emision" />
+                            <field name="nombre_programa" />
+                            <field name="entidad" />
+                        </group>
+                        <group string="Detalle">
+                            <field name="inicio" />
+                            <field name="termino" />
+                            <field name="informe_inicial" />
+                            <field name="oficio_inicial" />
+                            <field name="dias_faltantes" />
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Información adicional">
+                            <field name="cantidad_certi" />
+                            <field name="cantidad_pagada" />
+                            <field name="monto_depositar" />
+                            <field name="fecha_deposito" />
+                        </group>
+                        <group string="">
+                            <field name="informe_final" />
+                            <field name="oficio_final" />
+                            <field name="observacion" />
+                        </group>
+                    </group>
+                    <group string="Subir y ver documento">
+                        <field name="documento" filename="name_documento" widget="pdf_viewer" />
+                        <field name="name_documento" invisible="1" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_documento_resolucion_tree" model="ir.ui.view">
+        <field name="name">documento.resolucion.tree</field>
+        <field name="model">documento.resolucion</field>
+        <field name="arch" type="xml">
+            <tree string="Documentos">
+                <field name="resolucion_decanal" />
+                <field name="year" />
+                <field name="emision" />
+                <field name="dias_faltantes" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_documento_resolucion_kanban" model="ir.ui.view">
+        <field name="name">documento.resolucion.kanban</field>
+        <field name="model">documento.resolucion</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_documents">
+                <field name="resolucion_decanal" />
+                <field name="year" />
+                <field name="emision" />
+                <field name="dias_faltantes" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_title oe_partner_heading">
+                                            <field name="resolucion_decanal" />
+                                        </strong>
+                                        <div class="mt-1">
+                                            <field name="year" />
+                                        </div>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <span class="float-right text-right">
+                                            <field name="emision" />
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left">
+                                        <field name="entidad" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="view_documento_resolucion_search" model="ir.ui.view">
+        <field name="name">documento.resolucion.search</field>
+        <field name="model">documento.resolucion</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- Añadir campos para búsqueda -->
+                <field name="resolucion_decanal" string="Código"/>
+                <field name="entidad" string="Entidad"/>
+            </search>
+        </field>
+    </record>
+    <record id="action_documento_resolucion" model="ir.actions.act_window">
+        <field name="name">Resoluciones</field>
+        <field name="res_model">documento.resolucion</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Sube la primera resolución
+            </p>
+        </field>
+    </record>
+
+</odoo>

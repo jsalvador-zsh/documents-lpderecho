@@ -1,0 +1,51 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Rule for documento -->
+        <record id="documentos_rule" model="ir.rule">
+            <field name="name">Documentos: multi-company</field>
+            <field name="model_id" ref="model_documentos" />
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]" />
+        </record>
+
+        <!-- Rule for oficio -->
+        <record id="documento_oficio_rule" model="ir.rule">
+            <field name="name">Documento oficio: multi-company</field>
+            <field name="model_id" ref="model_documento_oficio" />
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]" />
+        </record>
+
+        <!-- Rule for informe -->
+        <record id="documento_informe_rule" model="ir.rule">
+            <field name="name">Documento informe: multi-company</field>
+            <field name="model_id" ref="model_documento_informe" />
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]" />
+        </record>
+
+        <!-- Rule for convenio -->
+        <record id="documento_convenio_rule" model="ir.rule">
+            <field name="name">Documento convenio: multi-company</field>
+            <field name="model_id" ref="model_documento_convenio" />
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]" />
+        </record>
+
+        <!-- Rule for resolucion -->
+        <record id="documento_resolucion_rule" model="ir.rule">
+            <field name="name">Documento resolucion: multi-company</field>
+            <field name="model_id" ref="model_documento_resolucion" />
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]" />
+        </record>
+
+        <!-- Rule for convenio -->
+        <record id="documento_vigencia_rule" model="ir.rule">
+            <field name="name">Documento vigencia: multi-company</field>
+            <field name="model_id" ref="model_documento_vigencia" />
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]" />
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,12 @@
+.custom-kb-card {
+    background-color: #f8f9fa; /* Color de fondo personalizado */
+}
+
+.custom-kb-card.o_kanban_image img {
+    width: 100%; /* Ajuste del tamaño de la imagen */
+    height: auto;
+}
+
+.custom-kb-card strong {
+    font-size: 16px; /* Tamaño de fuente personalizado */
+}

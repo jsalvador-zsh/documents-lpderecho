@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem 
+        id="menu_documentos_root" 
+        name="Documentos"
+        web_icon = "documents,static/description/icon.png" 
+        sequence="10"/>
+    <menuitem 
+        id="submenu_documentos" 
+        name="Documentos" 
+        parent="menu_documentos_root" 
+        action="action_my_documents" 
+        sequence="15"/>
+
+    <menuitem
+        id="submenu_documento_convenio"
+        name="Convenios"
+        action="action_documento_convenio"
+        parent="menu_documentos_root"
+        sequence="20"/>
+
+    <menuitem
+        id="submenu_documento_oficio_informe"
+        name="Oficios e informes"
+        parent="menu_documentos_root"
+        sequence="20"/>
+
+    <menuitem
+        id="submenu_documento_oficio"
+        name="Oficios"
+        action="action_documento_oficio"
+        parent="submenu_documento_oficio_informe"
+        sequence="25"/>
+
+    <menuitem
+        id="submenu_documento_informe"
+        name="Informes"
+        action="action_documento_informe"
+        parent="submenu_documento_oficio_informe"
+        sequence="30"/>
+
+    <menuitem
+        id="submenu_documento_resolucion"
+        name="Resoluciones"
+        action="action_documento_resolucion"
+        parent="menu_documentos_root"
+        sequence="20"/>
+
+    <menuitem
+        id="submenu_documento_vigencia"
+        name="Vigencias poder"
+        action="action_documento_vigencia"
+        parent="menu_documentos_root"
+        sequence="20"/>
+
+</odoo>
